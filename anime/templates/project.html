@@ -1,0 +1,94 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="feed">
+	<div class="news">
+		<div class="container">            
+			<div class="row">
+				<div class="block">	
+                    <div class="project-head" style="height:1.6em">{{ project.title }}</div>
+					<div class="description" style="display:table">
+                        <div class="row">
+						    <div style="width: 50%; display: table-cell; vertical-align: top">
+                                <img style="width: 100%" src="/media/{{ project.picture }}"/>
+                            </div>
+                            <div style="width: 50%; display: table-cell; vertical-align: top; padding-left: 10px">
+
+                                <b>Жанр: </b>
+                                {% for genre in project.genres.all %}{{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}{% if project.censor %}, 18+{% endif %}
+                                <br/> 
+                                <b>Статус: </b>{{ project.translation_status }}
+                                <br>
+                                <b>Автор: </b> {{ project.author }}
+                                <br>
+                                <b>Год выпуска: </b>{{ project.year }}
+                                <br>
+                                <b>Кол-во томов: </b> {{ project.status }}
+                                <br>
+                                <b>Описание: </b> {{ project.text }}
+                            </div>                            
+                        </div>
+                        <b>Перевод: </b> {{ project.translator }}
+                            <br>                            
+                            <b>Клин: </b> {{ project.cleaner }}
+                            <br>
+                            <b>Коррект: </b> {{ project.corrector }}
+                            <br>
+                            <b>Тайп: </b> {{ project.typer}}
+                            <br>
+					</div>				
+				</div>
+            </div>
+            <div class="row">
+				<div class="emptycell"></div>
+			</div>
+
+            {% for part in parts %}
+                <div class="row">
+                    <div class="block">
+
+                        <div class="project-head" style="height:1.6em">
+                            {{ part.name }}
+                        </div>
+
+                        <div class="description" style="display:table">
+                            <div class="row">
+                                <div style="width: 50%; display: table-cell; vertical-align: top">
+                                    <img style="width: 100%" src="/media/{{ part.picture }}"/>
+                                </div>
+                                <div style="width: 50%; display: table-cell; vertical-align: top; padding-left: 10px">
+                                    {% for chapter in part.chapters.all %}
+                                        {{ chapter.name }} <a target="_blank" href="{{ chapter.link }}">Скачать</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="emptycell"></div>
+                </div>
+            {% endfor %}
+
+		</div>
+	</div>
+	<div class="links">		
+		<div class="container">
+			
+			{% include "newprojects.html" %}
+            
+			<div class="row">
+				<div class="emptycell"></div>
+			</div>
+			
+            {% include "helpus.html" %}
+
+		</div>
+	</div>
+
+    
+
+</div>
+			
+{% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title> {{ title }}</title>
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'content/styles.css' %}">
+		
+	</head>
+
+	<body>
+        <div class="page">
+			<header>
+				<div class="logo"><h1>Disolver el lirio | Команда по переводу манги</h1></div>
+				<div class="navigation"><a href="/news">Новости</a> <a href="/projects">Наши проекты</a> <a href="/about">О команде</a> </div>
+			</header>
+			
+			{% block content %}{% endblock %}
+			
+		</div>
+	</body>
+</html>

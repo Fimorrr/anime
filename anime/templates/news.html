@@ -1,0 +1,65 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="feed">
+	<div class="news">
+		<div class="container">
+            {% for item in news %}
+			<div class="row">
+				<div class="block">					
+					<div class="news-head">
+						<div class="news-head-text"><h2>{{ item.title }}</h2></div>
+						<div class="news-head-date">{{ item.date }}</div>
+					</div>
+					<div class="news-content">
+						{{ item.content|safe }}
+					</div>
+					<hr class="news-line"/>
+					<div class="news-comments"><a href="/comments/{{ item.id }}/">Посмотреть комментарии ({{item.comments.count}})</a></div>
+				</div>
+			</div>
+            <div class="row">
+				<div class="emptycell"></div>
+			</div>
+            {% endfor %}
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div style="display: table-cell; text-align:left">
+                            {% if prev_link != 0 %}
+                                <a href="/news/{{ prev_link }}/">Предыдущие записи</a>
+                            {% endif %}               
+                        </div>
+                        <div style="display: table-cell; text-align:right">
+                            {% if link != 0 %}
+                                <a href="/news/{{ link }}/">Следующие записи</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+				<div class="emptycell"></div>
+			</div>
+		</div>
+	</div>
+	<div class="links">		
+		<div class="container">
+			
+			{% include "newprojects.html" %}
+            
+			<div class="row">
+				<div class="emptycell"></div>
+			</div>
+			
+            {% include "helpus.html" %}
+
+		</div>
+	</div>
+
+    
+
+</div>
+			
+{% endblock %}

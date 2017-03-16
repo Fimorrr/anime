@@ -1,0 +1,34 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<div class="feed">
+	<div class="news">
+		<div class="container">
+			<div class="row">
+				<div class="block">					
+					<div class="about-head">Команда Disolver el lirio</div>
+					<div class="news-content">
+						Информация о команде....
+					</div>
+				</div>
+			</div>
+            <div class="row">
+				<div class="emptycell"></div>
+			</div>
+		</div>
+	</div>
+	<div class="links">		
+		<div class="container">
+			
+            {% include "newprojects.html" %}
+
+			<div class="row">
+				<div class="emptycell"></div>
+			</div>
+			
+            {% include "helpus.html" %}
+
+		</div>
+	</div>
+</div>
+{% endblock %}
